@@ -1,10 +1,6 @@
-node_modules
+node_modules/
 .DS_Store
-dist
-packs
-.cache
-client/main.*
-translation_*
+dist/
 .env
 
 out/
