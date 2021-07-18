@@ -10,17 +10,14 @@ const createWindow = () => {
   // Create the browser window.
   const mainWindow = new BrowserWindow({
     webPreferences:{
-      nodeIntegration: true, enableRemoteModule: true
+      nodeIntegration: true, enableRemoteModule: true,             contextIsolation: false
     },
     width: 800,
     height: 600,
   });
 
   // and load the index.html of the app.
-  mainWindow.loadURL(audiogame_WEBPACK_ENTRY);
-
-  // Open the DevTools.
-  mainWindow.webContents.openDevTools();
+  mainWindow.loadURL(BEATSTAR_WEBPACK_ENTRY);
 };
 
 // This method will be called when Electron has finished

@@ -79,4 +79,3 @@ export class Mission {
 		}
 	}
 }
-module.exports.Mission = Mission

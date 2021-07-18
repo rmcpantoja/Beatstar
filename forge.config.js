@@ -1,10 +1,11 @@
+const packageJson = require('./package.json');
 module.exports = {
     "packagerConfig": {},
     "makers": [
         {
             "name": "@electron-forge/maker-squirrel",
             "config": {
-                "name": "audiogame"
+                "name": "beatstar", 
             }
         },
         {
@@ -28,11 +29,11 @@ module.exports = {
             renderer: {
                 config: './webpack.renderer.config.js',
                 entryPoints: [{
-                    html: './src/electron/index.html',
+                    html: './src/index.html',
                     js: './src/main.js',
-                    name: 'audiogame',
-                    nodeIntegration: true
-                }]
+                    name: "beatstar",
+                }],
+                nodeIntegration: true
             }
         }]
     ]

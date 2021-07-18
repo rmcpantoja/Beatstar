@@ -139,7 +139,6 @@ export function report(err) {
   });
 }
 async function setup() {
-  document.getElementById("app").focus();
   const prom = new Promise(resolve => {
     fetch("http://oriolgomez.com/versions.php?id=" + gameID)
       .then(event => event.text())
@@ -1983,7 +1982,7 @@ export async function changeLang() {
     });
   });
 }
-async function playTone() { }
+export async function playTone() { }
 export async function statsFunction() {
   const humanize = require("humanize-duration");
   let lng = "en";
@@ -2141,14 +2140,7 @@ export async function creditDeduct(price, alternative, name) {
     }
   }
 }
-module.exports.lang = lang;
-module.exports.statsFunction = statsFunction;
-module.exports.langs = langs;
-module.exports.packDirectory = packDirectory;
-module.exports.packdir = packdir;
-module.exports.playTone = playTone;
-module.exports.missions = missions;
-async function playTravel() {
+export async function playTravel() {
   let game = new Travel();
   await game.start();
 }
@@ -2198,4 +2190,3 @@ export async function importSave() {
   }
 }
 
-module.exports.playTravel = playTravel;
