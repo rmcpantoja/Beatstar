@@ -1,4 +1,3 @@
-import "babel-polyfill";
 'use strict';
 class GameUtils {
 	calculateDelta(lx, sx, sr = 0) {

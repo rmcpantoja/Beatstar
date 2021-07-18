@@ -1,4 +1,3 @@
-import "babel-polyfill";
 const { app } = require('electron').remote;
 	const { exec } = require("child_process");
 import { report } from './main';

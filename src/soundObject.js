@@ -1,4 +1,3 @@
-import "babel-polyfill";
 import { report } from './main';
 import { speech } from './tts';
 import panner from 'sono/effects/panner';

@@ -1,4 +1,3 @@
-import "babel-polyfill";
 import { Howl, Howler, Spatial } from 'howler';
 import { KeyboardInput } from './input';
 import { KeyEvent } from './keycodes';

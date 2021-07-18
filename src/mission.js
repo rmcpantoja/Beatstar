@@ -6,7 +6,7 @@ import { SliderItem, MenuItem } from './menuItem';
 import { Menu } from './menu';
 import { ScrollingText } from './scrollingText';
 import { strings } from './strings';
-class Mission {
+export class Mission {
 	constructor(id, scale, cost, includeName = false) {
 		if (!data.missionCredits) data.missionCredits = 0;
 		this.currentValue = 0;

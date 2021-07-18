@@ -1,5 +1,4 @@
 import { utils } from './utilities';
-import "babel-polyfill";
 import { speech } from './tts';
 var fs = require('fs');
 import { so } from './soundObject';

@@ -1,5 +1,4 @@
 'use strict';
-import "babel-polyfill";
 import { utils } from './utilities';
 import Hammer from 'hammerjs';
 import { speech } from './tts';

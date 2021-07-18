@@ -28,7 +28,7 @@ function sos() {
 export var gameID = "beat";
 export var newPath = "";
 let changedLang = false;
-var packageFile = require("../../package.json");
+var packageFile = require("../package.json");
 export var version = packageFile.version;
 export var version2 = "";
 export var lang = 0;
@@ -1984,7 +1984,7 @@ export async function changeLang() {
   });
 }
 async function playTone() { }
-async function statsFunction() {
+export async function statsFunction() {
   const humanize = require("humanize-duration");
   let lng = "en";
   if (lang == 2) lng = "es";
@@ -2052,7 +2052,7 @@ async function statsFunction() {
     st.setState(2);
   });
 }
-async function missions(checkOnly = false) {
+export async function missions(checkOnly = false) {
   let arr = [];
   let items = [];
   if (data.stats.totalRuns) {

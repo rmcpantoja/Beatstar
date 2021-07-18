@@ -1,4 +1,3 @@
-import "babel-polyfill";
 'use strict';
 import { KeyEvent } from './keycodes';
 import { so } from './soundObject';

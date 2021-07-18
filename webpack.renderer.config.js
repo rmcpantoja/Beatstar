@@ -7,6 +7,7 @@ rules.push({
 
 module.exports = {
   // Put your normal webpack config below here
+  target: 'node',
   module: {
     rules,
   },
