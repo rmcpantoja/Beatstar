@@ -2,7 +2,7 @@
   "name": "beatstar",
   "version": "12.0.0",
   "description": "Beatstar JS",
-  "main": "./client/index.js",
+  "main": "./.webpack/main",
   "scripts": {
     "git": "git add . && git commit -m 'npm auto commit' && npm version patch && git push",
     "minor": "git add . && git commit -m 'npm next minor version' && npm version minor && git push",
@@ -12,20 +12,18 @@
     "make": "electron-forge make"
   },
   "author": "Oriol Gomez",
-  "license": "GPL",
+  "license": "Unlicense",
   "dependencies": {
     "52-deck": "^1.1.0",
     "base-64": "^1.0.0",
     "copy-to-clipboard": "^3.3.1",
     "dotenv": "^8.2.0",
     "download-file-sync": "^1.0.4",
-    "electron-notarize": "^1.0.0",
     "electron-squirrel-startup": "^1.0.0",
     "fs-walk": "0.0.2",
     "hammerjs": "^2.0.8",
     "howler": "^2.2.0",
     "humanize-duration": "^3.24.0",
-    "s": "^0.1.1",
     "sono": "^2.1.6",
     "speak-tts": "^2.0.8",
     "tone": "^13.8.34",
@@ -37,6 +35,9 @@
     "@electron-forge/maker-rpm": "^6.0.0-beta.58",
     "@electron-forge/maker-squirrel": "^6.0.0-beta.58",
     "@electron-forge/maker-zip": "^6.0.0-beta.58",
-    "electron": "^13.1.6"
+    "@electron-forge/plugin-webpack": "^6.0.0-beta.58",
+    "electron": "13.1.7",
+    "electron-notarize": "^1.0.0",
+    "webpack-cli": "^4.7.2"
   }
 }

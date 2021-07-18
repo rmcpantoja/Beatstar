@@ -5,7 +5,7 @@ module.exports = async () => {
             {
                 "name": "@electron-forge/maker-squirrel",
                 "config": {
-                    "name": "beatstar"
+                    "name": "audiogame"
                 }
             },
             {
@@ -22,7 +22,22 @@ module.exports = async () => {
                 "name": "@electron-forge/maker-rpm",
                 "config": {}
             }
-        ]
+        ],
+        plugins: [
+            ['@electron-forge/plugin-webpack', {
+              mainConfig: './webpack.main.config.js',
+              renderer: {
+                config: './webpack.renderer.config.js',
+                entryPoints: [{
+                  html: './src/electron/index.html',
+                  js: './src/electron/renderer.js',
+                  name: 'audiogame',
+                  nodeIntegration: true
+                }]
+              }
+            }]
+          ]
+        
     }
 return config;
 }
