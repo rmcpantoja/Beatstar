@@ -1,13 +1,10 @@
 const obfuscator = require('./webpack.obfuscator.config');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
-const { config } = require('dotenv');
 
-module.exports = async(env) => {
+module.exports = {
 
-  const configuration = {
     devtool: 'source-map',
     entry: './src/electron/main.js',
-    // Put your normal webpack config below here
     module: {
       rules: require('./webpack.rules'),
       plugins: [
@@ -15,20 +12,14 @@ module.exports = async(env) => {
           patterns: [
             {
               from: 'sounds/*',
-              to: 'sounds/[name][ext]'
+              to: '.webpack/renderer/sounds/[name][ext]'
             },
             {
               from: 'documentation/*',
-              to: '[name][ext]'
+              to: '.webpack/renderer/[name][ext]'
             },
           ],
         })
       ]
     },
-  };
-  if (env.NODE_ENV !== 'development') {
-    config.plugins.push(obfuscator);
   }
-  console.log(' hi webpack');
-  return configuration;
-};
