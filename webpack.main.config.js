@@ -2,12 +2,9 @@ const obfuscator = require('./webpack.obfuscator.config');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const { config } = require('dotenv');
 
-module.exports = async (env) => {
-  /**
-   * This is the main entry point for your application, it's the first file
-   * that runs in the main process.
-   */
-  const config = {
+module.exports = async(env) => {
+
+  const configuration = {
     devtool: 'source-map',
     entry: './src/electron/main.js',
     // Put your normal webpack config below here
@@ -33,5 +30,5 @@ module.exports = async (env) => {
     config.plugins.push(obfuscator);
   }
   console.log(' hi webpack');
-  return config
+  return configuration;
 };
