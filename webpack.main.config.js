@@ -32,5 +32,6 @@ module.exports = async (env) => {
   if (env.NODE_ENV !== 'development') {
     config.plugins.push(obfuscator);
   }
+  console.log(' hi webpack');
   return config
 };

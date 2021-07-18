@@ -30,7 +30,7 @@ module.exports = async () => {
                 config: './webpack.renderer.config.js',
                 entryPoints: [{
                   html: './src/electron/index.html',
-                  js: './src/electron/renderer.js',
+                  js: './src/main.js',
                   name: 'audiogame',
                   nodeIntegration: true
                 }]
