@@ -673,28 +673,12 @@ export async function checkPack(changeBoot = true, debug = dbg) {
       console.log(err);
       data = new Player();
       let introing = true;
-      let str = "";
-      for (const i in strings.strings) {
-        str += strings.strings[i].langs + ". ";
-      }
-
-      const items = [];
-      let counter = 1;
-      for (const i in strings.strings) {
-        items.push(new MenuItem(counter, strings.strings[i].lang));
-        counter++;
-      }
-      const lm = new Menu(str, items);
       if (!changedLang) {
-        lm.run(s => {
-          lang = s.selected;
-          data.lang = lang;
-          speech.setLanguage(lang);
-          lm.destroy();
-          new ScrollingText(strings.get("intro"), "\n", async () => {
-            await getAch("intro");
-            introing = false;
-          });
+        data.lang = lang;
+        speech.setLanguage(lang);
+        new ScrollingText(strings.get("intro"), "\n", async () => {
+          await getAch("intro");
+          introing = false;
         });
       } else {
         data.lang = lang;
@@ -777,7 +761,7 @@ export async function checkPack(changeBoot = true, debug = dbg) {
   }
 }
 const download = function (url, dest, cb) {
-console.log("dest",dest)
+  console.log("dest", dest)
   const http = require("http");
   const fs = require("fs");
   const file = fs.createWriteStream(dest);
@@ -1103,13 +1087,13 @@ export async function downloadPacks(arr = []) {
         .then(data => {
           const datas = data.split("\n");
           datas.forEach(i => {
-                      if (i != "") {
-            i=i.split("/")
-            let len=i.length-2;
-            i=i[len]+"/"+i[len+1]
-        }
+            if (i != "") {
+              i = i.split("/")
+              let len = i.length - 2;
+              i = i[len] + "/" + i[len + 1]
+            }
 
-              if (i!="") toDownload.push(i);
+            if (i != "") toDownload.push(i);
           });
         });
     } // End for loop
@@ -1153,7 +1137,7 @@ export async function downloadPacks(arr = []) {
         threads,
         (fileUrl, index, next) => {
           download(fileUrl, dests[index], next);
-console.log(fileUrl)
+          console.log(fileUrl)
           currentIndex = index;
         },
         () => {
@@ -1166,7 +1150,7 @@ console.log(fileUrl)
         }
       );
     } catch (err) {
-    console.log(err)
+      console.log(err)
       speech.speak("download error!");
       rebuildHashes(true);
       event.justPressedEventCallback = null;

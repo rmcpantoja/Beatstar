@@ -1,5 +1,5 @@
 const { app } = require('electron').remote;
-	const { exec } = require("child_process");
+const { exec } = require("child_process");
 import { report } from './main';
 
 'use strict';
@@ -30,17 +30,17 @@ class TTS {
 				this.unduck()
 			}
 			if (key == KeyEvent.VK_UP && this.speechController.isDown(KeyEvent.DOM_VK_SHIFT)) {
-//rate here
-this.setRate(this.rate+1)
-strings.speak('newRate');
+				//rate here
+				this.setRate(this.rate + 1)
+				strings.speak('newRate');
 			}
 			if (key == KeyEvent.VK_DOWN && this.speechController.isDown(KeyEvent.DOM_VK_CONTROL)) {
-//rate here
-this.setRate(this.rate+1)
-strings.speak('newRate');
+				//rate here
+				this.setRate(this.rate + 1)
+				strings.speak('newRate');
 			}
-			
-			
+
+
 		};
 
 		this.synth.init({
@@ -63,8 +63,8 @@ strings.speak('newRate');
 			if (lang == 1) this.lang = "en";
 			if (lang == 2) this.lang = "es";
 			this.synth.setLanguage(this.lang)
-			if (process.platform=='darwin') this.setVoice(null,true)
-								console.log("default voice ",this.voice)
+			if (process.platform == 'darwin') this.setVoice(null, true)
+			console.log("default voice ", this.voice)
 
 		} catch (err) {
 			report(err);
@@ -82,35 +82,35 @@ strings.speak('newRate');
 
 		if (sr) this.webTTS = false;
 		if (!sr) this.webTTS = true;
-		if (process.platform == 'darwin') this.webTTS=true
+		if (process.platform == 'darwin') this.webTTS = true
 		if (this.webTTS) {
 			try {
-				let oldText=text;
+				let oldText = text;
 				if (typeof text == "number") {
-					text = " "+text + ".";
+					text = " " + text + ".";
 					//we need this because some voices fail to process numbers. Why? Don't ask me.
 				}
 				if (process.platform == 'darwin') {
 					this.speakUnthreaded(text)
 				} else {
-				this.synth.speak({
-					text: text,
-					queue: queue,
-					listeners: {
-						onstart: () => {
-							this.duck();
-						},
-						onend: () => {
-							this.unduck();
-						},
-						onerror: (err) => {
-							//this.setVoice(null,true);
-							return false;
-						},
-					}
-				})
+					this.synth.speak({
+						text: text,
+						queue: queue,
+						listeners: {
+							onstart: () => {
+								this.duck();
+							},
+							onend: () => {
+								this.unduck();
+							},
+							onerror: (err) => {
+								//this.setVoice(null,true);
+								return false;
+							},
+						}
+					})
 				}
-			} catch(e) {
+			} catch (e) {
 				console.error(e)
 			}
 
@@ -162,7 +162,7 @@ strings.speak('newRate');
 		}
 		if (voiceArray.includes(name)) {
 			speech.synth.setVoice(name);
-			this.voice=name
+			this.voice = name
 		}
 
 	}
@@ -214,12 +214,12 @@ strings.speak('newRate');
 		else {
 			try {
 				this.synth.setVoice(voiceArray[0]);
-				this.voice=voiceArray[0]
+				this.voice = voiceArray[0]
 				return voiceArray[0];
 			} catch (err) {
 				report(err);
 				this.synth.setVoice(voiceArray[1]);
-				this.voice=voiceArray[1]
+				this.voice = voiceArray[1]
 				return voiceArray[1];
 			} // catch block
 		}//else
@@ -233,23 +233,23 @@ strings.speak('newRate');
 		this.ducking = false;
 		if (typeof this.ducker !== "undefined") this.ducker.unduck();
 	}
-speakUnthreaded(text) {
-	let rate=this.rate*100
-if (this.childProcess) this.childProcess.kill()
-this.duck()
-	this.childProcess=exec('say "'+text+'" -r '+rate+ ' -v '+this.voice, (error, stdout, stderr) => {
-		if (error) {
-			throw(`error: ${error.message}`);
-			return;
-		}
-		if (stderr) {
-			console.log(`stderr: ${stderr}`);
-			return;
-		}
-		console.log(`stdout: ${stdout}`);
-		this.unduck();
-	});
-}
+	speakUnthreaded(text) {
+		let rate = this.rate * 100
+		if (this.childProcess) this.childProcess.kill()
+		this.duck()
+		this.childProcess = exec('say "' + text + '" -r ' + rate + ' -v ' + this.voice, (error, stdout, stderr) => {
+			if (error) {
+				throw (`error: ${error.message}`);
+				return;
+			}
+			if (stderr) {
+				console.log(`stderr: ${stderr}`);
+				return;
+			}
+			console.log(`stdout: ${stdout}`);
+			this.unduck();
+		});
+	}
 } // End class
 const speech = new TTS(false);
 export { TTS, speech };
