@@ -5,7 +5,7 @@ import { KeyboardInput } from './input';
 import { KeyEvent } from './keycodes';
 import { speech } from './tts';
 class LanguageSelector {
-	constructor(element, callback) {
+	constructor(element = 'langSelect') {
 		this.langs = [];
 		this.input = new KeyboardInput();
 		this.input.init();
@@ -13,7 +13,6 @@ class LanguageSelector {
 		this.langs.push("I want to play in English");
 		this.langs.push("Quiero jugar en español.");
 		this.id = document.getElementById(element);
-		this.callback = callback;
 		this.container = document.createElement('div');
 		this.buttons = [];
 		this.buttons[0] = document.createElement('div');
@@ -25,7 +24,9 @@ class LanguageSelector {
 			this.buttons[i].value = this.langs[i];
 			this.buttons[i].addEventListener('click', () => {
 				this.sound.stop()
-				this.callback(i);
+				return new Promise((resolve) => {
+					resolve(i);
+				});
 				this.container.innerHTML = '';
 				this.input.removeAllListeners();
 				document.getElementById("app").focus();
@@ -38,8 +39,10 @@ class LanguageSelector {
 			this.container.appendChild(this.buttons[i]);
 			this.input.once("chr" + i, () => {
 				this.sound.stop()
-				this.callback(i);
-				this.container.innerHTML = '';
+				return new Promise((resolve) => {
+					resolve(i);
+				});
+				container.innerHTML = '';
 				this.input.removeAllListeners();
 				document.getElementById("app").focus();
 			});
