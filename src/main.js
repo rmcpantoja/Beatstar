@@ -19,6 +19,7 @@ import {
 } from "./minis.js";
 import { Mission } from "./mission";
 let justRan = true;
+console.log('hi');
 function sop() {
   so.directory = packdir + "/";
 }
@@ -139,6 +140,7 @@ export function report(err) {
   });
 }
 async function setup() {
+  console.log('hello');
   const prom = new Promise(resolve => {
     fetch("http://oriolgomez.com/versions.php?id=" + gameID)
       .then(event => event.text())

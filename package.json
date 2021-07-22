@@ -8,8 +8,8 @@
     "git": "git add . && git commit -m 'npm auto commit' && npm version patch && git push",
     "minor": "git add . && git commit -m 'npm next minor version' && npm version minor && git push",
     "release": "git add . && git commit -m 'npm release' && npm version major && git push",
-    "start": "electron-forge start",
-    "package": "webpack --mode development --config webpack.renderer.config.js",
+    "start": "electron .",
+    "package": "webpack --mode development --config webpack.renderer.config.js webpack.config.main.js",
     "make": "electron-forge make"
   },
   "author": "Oriol Gomez",

@@ -2,8 +2,10 @@ module.exports = function(env, argv) {
   const config = {
   target: 'electron-renderer',
   entry: './src/main.js',
-  output: './bundle.js',
-//  devtool: 'source-map',
+  output: {
+    filename: 'bundle.js',
+    path: __dirname
+  },
 };
 return config;
 }
