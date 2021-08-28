@@ -1,7 +1,8 @@
 node_modules/
 .DS_Store
 dist/
-.env
+.env-
 out/
 ewt/
-.webpack/
+*.js.map
+bundle.js
