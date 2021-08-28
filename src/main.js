@@ -759,10 +759,8 @@ export async function checkPack(changeBoot = true, debug = dbg) {
     if (debug) {
       try {
         await strings.check(2);
-        var synth = new Tone.Synth().toMaster();
         let dice = new DiceGame();
         await dice.start();
-
         return;
       } catch (err) {
         report(err);
